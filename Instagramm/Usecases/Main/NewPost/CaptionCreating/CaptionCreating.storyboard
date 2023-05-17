@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Caption Creating View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CaptionCreatingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="CaptionCreatingViewController" customModule="Instagramm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-xJ-S5s">
+                                <rect key="frame" x="0.0" y="119" width="393" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="pGu-1L-t1i"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f3m-Ib-1Po">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write a caption..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gOd-HF-oXs">
+                                <rect key="frame" x="16" y="263" width="361" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ShC-L5-i2a"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajz-56-VRB">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <items>
+                                    <navigationItem title="New post" leftItemsSupplementBackButton="YES" id="mXo-JV-Gog">
+                                        <barButtonItem key="backBarButtonItem" title="Back" image="chevron.backward" catalog="system" id="vhN-l9-sgH"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.backward" catalog="system" id="sez-Oj-2dn">
+                                            <connections>
+                                                <action selector="btnBackClick:" destination="Y6W-OH-hqX" id="b5l-ge-Gpy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Share" id="0SZ-0s-rpm">
+                                            <connections>
+                                                <action selector="btnSharePostClick:" destination="Y6W-OH-hqX" id="KJw-DH-9Cy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gOd-HF-oXs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Naf-9d-9EI"/>
+                            <constraint firstItem="ajz-56-VRB" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="QAd-Uq-mes"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ajz-56-VRB" secondAttribute="trailing" id="RtE-wH-tDL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gOd-HF-oXs" secondAttribute="trailing" constant="16" id="VG8-MR-OFB"/>
+                            <constraint firstItem="gOd-HF-oXs" firstAttribute="top" secondItem="VgT-xJ-S5s" secondAttribute="bottom" constant="16" id="eGL-Ma-JcN"/>
+                            <constraint firstItem="ajz-56-VRB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="mfN-nR-1mJ"/>
+                            <constraint firstItem="VgT-xJ-S5s" firstAttribute="top" secondItem="ajz-56-VRB" secondAttribute="bottom" constant="16" id="nHo-rY-Dj5"/>
+                            <constraint firstItem="VgT-xJ-S5s" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ohZ-lV-2TV"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VgT-xJ-S5s" secondAttribute="trailing" id="qsb-k1-4CW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="txtCaption" destination="gOd-HF-oXs" id="lA2-8u-TLJ"/>
+                        <outlet property="uploadCollectionView" destination="VgT-xJ-S5s" id="X3b-Ki-BCr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="104.58015267175573" y="-27.464788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
