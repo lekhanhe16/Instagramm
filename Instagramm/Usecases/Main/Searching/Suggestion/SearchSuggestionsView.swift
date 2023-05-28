@@ -9,9 +9,9 @@ import UIKit
 import RxSwift
 
 class SearchSuggestionsView: UIView {
-    var users = [[String:Any]]()
+    var users = [User]()
     var isSearchingUser = true
-    var clickEvent = PublishSubject<[String:Any]>()
+    var clickEvent = PublishSubject<User>()
     
     func setupTableView() {
         suggestionsTable.register(UINib(nibName: "SuggestionCell", bundle: nil), forCellReuseIdentifier: "suggestioncell")
@@ -58,7 +58,7 @@ extension SearchSuggestionsView : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "suggestioncell") as! SuggestionCell
-        cell.cellText.text = (users[indexPath.row] as [String:Any])["username"] as? String
+        cell.cellText.text = users[indexPath.row].username
         return cell
     }
     

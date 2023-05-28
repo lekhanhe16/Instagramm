@@ -11,7 +11,7 @@ class UserProfileViewController: UIViewController {
     let FOLLOW = "Follow"
     let UNFOLLOW = "Unfollow"
     
-    var dataSet1 = [[String: Any]]()
+    var dataSet1 = [Post]()
     let dataSet2 = ["brown", "cyan"]
     
     @IBOutlet weak var numOfPost: UILabel!
@@ -20,14 +20,14 @@ class UserProfileViewController: UIViewController {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
-    let follower = UserDB.shared.getCurrentUser(uid: "")!["user_id"] as! String
+    let follower = UserDB.shared.getCurrentUser(uid: "")!.user_id
     @IBOutlet weak var btnFollow: UIButton!
     var following = ""
-    var user: [String:Any]!
-    init?(coder: NSCoder, user: [String: Any]) {
+    var user: User!
+    init?(coder: NSCoder, user: User) {
         super.init(coder: coder)
         self.user = user
-        following = user["user_id"] as! String
+        following = user.user_id
     }
     
     var dataSource: UICollectionViewDiffableDataSource<Int, String>!
@@ -39,7 +39,7 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UserDB.shared.getUserByUserID(id: user["user_id"] as! String) { [weak self] result in
+        UserDB.shared.getUserByUserID(id: user.user_id) { [weak self] result in
             if let result = result {
                 self?.user = result
                 self?.setUpView()
@@ -52,7 +52,7 @@ class UserProfileViewController: UIViewController {
         
         createDataSource()
         
-        PostDB.shared.fetchPersonalPosts(of: user!["user_id"] as! String) { [weak self] myPosts in
+        PostDB.shared.fetchPersonalPosts(of: user.user_id) { [weak self] myPosts in
             if  myPosts.isEmpty == false {
                 self?.dataSet1 = myPosts
                 self?.loadData1()
@@ -62,10 +62,10 @@ class UserProfileViewController: UIViewController {
     }
 
     func loadData1() {
-        print(dataSet1.compactMap {$0["post_id"] as? String})
+        print(dataSet1.compactMap {$0.post_id})
         snapShot = NSDiffableDataSourceSnapshot()
         snapShot.appendSections([0])
-        snapShot.appendItems(dataSet1.compactMap {$0["post_id"] as? String}, toSection: 0)
+        snapShot.appendItems(dataSet1.compactMap {$0.post_id}, toSection: 0)
         dataSource.apply(snapShot)
     }
     
@@ -75,8 +75,8 @@ class UserProfileViewController: UIViewController {
                 print("hellooo")
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mycell", for: indexPath) as! MyCell
                 cell.config(withPost: (self?.dataSet1.first(where: { post in
-                    (post["post_id"] as! String) == item
-                })!)!)
+                    post.post_id == item
+                }))!)
                 return cell
             }
             else {
@@ -117,25 +117,25 @@ class UserProfileViewController: UIViewController {
     }
     
     func setUpView() {
-        title = user["username"] as? String
+        title = user.username
         // Do any additional setup after loading the view.
-        print(user["followers"] as! [String])
-        if (user["followers"] as! [String]).contains(follower) {
+//        print(user.followers)
+        if user.followers.contains(follower) {
             btnFollow.setTitle(UNFOLLOW, for: .normal)
         }
-        numOfPost.text = "\((user["posts"] as! [String]).count)"
-        numOfFollowers.text = "\((user["followers"] as! [String]).count)"
-        numOfFollowing.text = "\((user["following"] as! [String]).count)"
+        numOfPost.text = "\(user.posts.count)"
+        numOfFollowers.text = "\(user.followers.count)"
+        numOfFollowing.text = "\(user.following.count)"
     }
     @IBAction func btnFollowClick(_ sender: UIButton) {
         print()
         if btnFollow.titleLabel?.text == FOLLOW {
             UserDB.shared.exeFollowing(follower: follower, following: following)
-            numOfFollowers.text = "\((user["followers"] as! [String]).count+1)"
+            numOfFollowers.text = "\(user.followers.count+1)"
             btnFollow.setTitle(UNFOLLOW, for: .normal)
         }
         else {
-            numOfFollowers.text = "\((user["followers"] as! [String]).count-1)"
+            numOfFollowers.text = "\(user.followers.count-1)"
             UserDB.shared.exeUnFollowing(follower: follower, following: following)
             btnFollow.setTitle(FOLLOW, for: .normal)
         }

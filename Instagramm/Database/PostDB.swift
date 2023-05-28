@@ -76,7 +76,7 @@ class PostDB {
         }
     }
     
-    func fetchPersonalPosts(of userId: String, completion: @escaping ([[String: Any]]) -> Void) {
+    func fetchPersonalPosts(of userId: String, completion: @escaping ([Post]) -> Void) {
         var listUser = [String]()
         listUser.append(userId)
         fs.collection("posts")
@@ -84,16 +84,9 @@ class PostDB {
             .whereField("author", isEqualTo: userId)
             .limit(to: 25).getDocuments { qs, _ in
                 if let qs {
-                    var result = [[String: Any]]()
+                    var result = [Post]()
                     for doc in qs.documents {
-                        result.append([
-                            "post_id": doc.documentID,
-                            "author": doc["author"] as! String,
-                            "caption": doc["caption"] as! String,
-                            "likes": (doc["likes"] as? [String]) ?? [],
-                            "media_ref": doc["media_ref"] as! [String],
-                            "post_date": doc["post_date"] as! Double
-                        ])
+                        result.append(Post(post_id: doc.documentID, post_date: doc["post_date"] as! Double, author: doc["author"] as! String, caption: doc["caption"] as! String, likes: (doc["likes"] as? [String]) ?? [], media_ref: doc["media_ref"] as! [String]))
                     }
                     completion(result)
                 }
@@ -103,14 +96,14 @@ class PostDB {
             }
     }
         
-    func fetchNewFeeds(completion: @escaping ([[String: Any]]) -> Void) {
+    func fetchNewFeeds(completion: @escaping ([Post]) -> Void) {
         var listUser = [String]()
         
-        for user_id in UserDB.shared.getCurrentUser(uid: "")!["following"] as! [String] {
+        for user_id in UserDB.shared.getCurrentUser(uid: "")!.following {
             listUser.append(user_id)
         }
         
-        listUser.append(UserDB.shared.getCurrentUser(uid: "")!["user_id"] as! String)
+        listUser.append(UserDB.shared.getCurrentUser(uid: "")!.user_id)
 //        print(listUser)
         if let lastvisible = lastVisible {
             print(lastvisible.documentID)
@@ -123,18 +116,11 @@ class PostDB {
                     if let qs {
                         self?.lastVisible = qs.documents.last
                         
-                        var result = [[String: Any]]()
+                        var result = [Post]()
                             
                         for doc in qs.documents {
                             if !(self?.fetchedPosts.contains(doc.documentID))! {
-                                result.append([
-                                    "post_id": doc.documentID,
-                                    "author": doc["author"] as! String,
-                                    "caption": doc["caption"] as! String,
-                                    "likes": (doc["likes"] as? [String]) ?? [],
-                                    "media_ref": doc["media_ref"] as! [String],
-                                    "post_date": doc["post_date"] as! Double
-                                ])
+                                result.append(Post(post_id: doc.documentID, post_date: doc["post_date"] as! Double, author: doc["author"] as! String, caption: doc["caption"] as! String, likes: (doc["likes"] as? [String]) ?? [], media_ref: doc["media_ref"] as! [String]))
                                 self?.fetchedPosts.insert(doc.documentID)
                             }
                         }
@@ -153,18 +139,11 @@ class PostDB {
                 .limit(to: 25).getDocuments { [weak self] qs, _ in
                     if let qs {
                         self?.lastVisible = qs.documents.last
-                        var result = [[String: Any]]()
+                        var result = [Post]()
                         
                         for doc in qs.documents {
                             self?.fetchedPosts.insert(doc.documentID)
-                            result.append([
-                                "post_id": doc.documentID,
-                                "author": doc["author"] as! String,
-                                "caption": doc["caption"] as! String,
-                                "likes": (doc["likes"] as? [String]) ?? [],
-                                "media_ref": doc["media_ref"] as! [String],
-                                "post_date": doc["post_date"] as! Double
-                            ])
+                            result.append(Post(post_id: doc.documentID, post_date: doc["post_date"] as! Double, author: doc["author"] as! String, caption: doc["caption"] as! String, likes: (doc["likes"] as? [String]) ?? [], media_ref: doc["media_ref"] as! [String]))
                         }
                         completion(result)
                     }
@@ -184,7 +163,7 @@ class PostDB {
         for img in images {
             postMediaRefs.append("media/posts/\(newId)/\(img["file_name"] as! String)")
         }
-        let user = UserDB.shared.getCurrentUser(uid: "")!["user_id"] as! String
+        let user = UserDB.shared.getCurrentUser(uid: "")!.user_id
         
 //        Database.database().reference().child("post_comments").child(newId).setValue([String:Any]())
         print("hellooo")

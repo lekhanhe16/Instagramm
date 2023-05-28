@@ -52,7 +52,7 @@ class FeedCell: UICollectionViewCell {
     
     @IBAction func btnLikePostClick(_ sender: UIButton) {
 //        btnLikePost.tintColor = .red
-        let userid = UserDB.shared.getCurrentUser(uid: "")!["user_id"] as! String
+        let userid = UserDB.shared.getCurrentUser(uid: "")!.user_id
         if sender.tintColor != .systemRed {
             PostDB.shared.likePost(postId: postId, userId: userid) { isSucceed in
                 if isSucceed {

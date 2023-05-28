@@ -17,8 +17,8 @@ class MyCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func config(withPost post: [String:Any]) {
-        StorageDB.shared.getImgUrlFromFirebaseStorage(url: (post["media_ref"] as! [String])[0]) { [weak self] url, error in
+    func config(withPost post: Post) {
+        StorageDB.shared.getImgUrlFromFirebaseStorage(url: post.media_ref[0]) { [weak self] url, error in
             if let err = error {
                 print(err.localizedDescription)
             }

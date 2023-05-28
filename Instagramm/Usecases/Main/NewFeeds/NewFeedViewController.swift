@@ -8,7 +8,7 @@
 import UIKit
 
 class NewFeedViewController: UIViewController {
-    var posts = [[String: Any]]()
+    var posts = [Post]()
     var isFetching = false
     @IBAction func btnHeartClicked(_ sender: UIBarButtonItem) {
         navigationController?.navigationBar.isHidden = true
@@ -49,11 +49,11 @@ extension NewFeedViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedcell", for: indexPath) as! FeedCell
-        cell.lblUser.text = posts[indexPath.row]["author"] as? String
-        cell.postId = posts[indexPath.row]["post_id"] as? String
-        cell.didLikePost(like: ((posts[indexPath.row]["likes"] as? [String])?.contains((UserDB.shared.getCurrentUser(uid: "")?["user_id"] as? String)!)) ?? false)
-        cell.lblCaption.text = posts[indexPath.row]["caption"] as? String
-        cell.loadMedia(withMedia: posts[indexPath.row]["media_ref"] as! [String])
+        cell.lblUser.text = posts[indexPath.row].author
+        cell.postId = posts[indexPath.row].post_id
+        cell.didLikePost(like: (posts[indexPath.row].likes.contains(UserDB.shared.getCurrentUser(uid: "")!.user_id)))
+        cell.lblCaption.text = posts[indexPath.row].caption
+        cell.loadMedia(withMedia: posts[indexPath.row].media_ref)
         return cell
     }
 }
