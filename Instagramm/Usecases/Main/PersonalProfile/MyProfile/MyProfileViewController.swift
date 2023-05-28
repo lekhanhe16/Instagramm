@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 class MyProfileViewController: UIViewController {
 
-    var dataSet1 = [[String: Any]]()
+    var dataSet1 = [Post]()
     let dataSet2 = ["brown", "cyan"]
     
     @IBOutlet weak var nPosts: UILabel!
@@ -27,7 +27,7 @@ class MyProfileViewController: UIViewController {
         switch index {
             case 0:
                 snapShot.deleteItems(dataSet2)
-                snapShot.appendItems(dataSet1.compactMap {$0["post_id"] as? String}, toSection: 0)
+                snapShot.appendItems(dataSet1.compactMap {$0.post_id}, toSection: 0)
                 dataSource.apply(snapShot)
             default:
 //                snapShot.deleteItems(dataSet1.compactMap {$0["post_id"] as? String})
@@ -43,9 +43,9 @@ class MyProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        nPosts.text = "\((UserDB.shared.getCurrentUser(uid: "")!["posts"] as! [String]).count)"
-        nFollowers.text = "\((UserDB.shared.getCurrentUser(uid: "")!["followers"] as! [String]).count)"
-        nFollowing.text = "\((UserDB.shared.getCurrentUser(uid: "")!["following"] as! [String]).count)"
+        nPosts.text = "\(UserDB.shared.getCurrentUser(uid: "")!.posts.count)"
+        nFollowers.text = "\(UserDB.shared.getCurrentUser(uid: "")!.followers.count)"
+        nFollowing.text = "\(UserDB.shared.getCurrentUser(uid: "")!.following.count)"
     }
     var dataSource: UICollectionViewDiffableDataSource<Int, String>!
     var snapShot: NSDiffableDataSourceSnapshot<Int, String>!
@@ -60,7 +60,7 @@ class MyProfileViewController: UIViewController {
         
         createDataSource()
         
-        PostDB.shared.fetchPersonalPosts(of: UserDB.shared.getCurrentUser(uid: "")!["user_id"] as! String) { [weak self] myPosts in
+        PostDB.shared.fetchPersonalPosts(of: UserDB.shared.getCurrentUser(uid: "")!.user_id) { [weak self] myPosts in
             if  myPosts.isEmpty == false {
                 self?.dataSet1 = myPosts
                 self?.loadData1()
@@ -70,10 +70,10 @@ class MyProfileViewController: UIViewController {
     }
     
     func loadData1() {
-        print(dataSet1.compactMap {$0["post_id"] as? String})
+        print(dataSet1.compactMap {$0.post_id})
         snapShot = NSDiffableDataSourceSnapshot()
         snapShot.appendSections([0])
-        snapShot.appendItems(dataSet1.compactMap {$0["post_id"] as? String}, toSection: 0)
+        snapShot.appendItems(dataSet1.compactMap {$0.post_id}, toSection: 0)
         dataSource.apply(snapShot)
     }
     
@@ -83,7 +83,7 @@ class MyProfileViewController: UIViewController {
                 print("hellooo")
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mycell", for: indexPath) as! MyCell
                 cell.config(withPost: (self?.dataSet1.first(where: { post in
-                    (post["post_id"] as! String) == item
+                    post.post_id == item
                 })!)!)
                 return cell
             }

@@ -50,6 +50,8 @@
 		6BE16DEC2A0401260072782A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE16DEB2A0401260072782A /* SignInViewController.swift */; };
 		6BE16DEE2A040DA40072782A /* TextFieldValidationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE16DED2A040DA40072782A /* TextFieldValidationUtils.swift */; };
 		6BE16DF52A0420500072782A /* NewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE16DF42A0420500072782A /* NewFeedViewController.swift */; };
+		6BF42DCC2A2388F0009A720B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF42DCB2A2388F0009A720B /* Post.swift */; };
+		6BF42DCE2A2388F9009A720B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF42DCD2A2388F9009A720B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +101,8 @@
 		6BE16DEB2A0401260072782A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6BE16DED2A040DA40072782A /* TextFieldValidationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidationUtils.swift; sourceTree = "<group>"; };
 		6BE16DF42A0420500072782A /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedViewController.swift; sourceTree = "<group>"; };
+		6BF42DCB2A2388F0009A720B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		6BF42DCD2A2388F9009A720B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8E38FA4FA18D798EFFA2B94F /* Pods_Instagramm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagramm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -242,6 +246,7 @@
 		6BE16DCB2A03F7E50072782A /* Instagramm */ = {
 			isa = PBXGroup;
 			children = (
+				6BF42DCA2A2388DA009A720B /* Entities */,
 				6BC84AD52A054B9B003FD456 /* Database */,
 				6BC84AD12A05428A003FD456 /* Extensions */,
 				6BE16DE42A03FDCD0072782A /* Usecases */,
@@ -365,6 +370,15 @@
 				6BC84ACF2A053742003FD456 /* MyProfile */,
 			);
 			path = PersonalProfile;
+			sourceTree = "<group>";
+		};
+		6BF42DCA2A2388DA009A720B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				6BF42DCB2A2388F0009A720B /* Post.swift */,
+				6BF42DCD2A2388F9009A720B /* User.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		9A1D8B5AF489625C3DE43B04 /* Frameworks */ = {
@@ -523,10 +537,12 @@
 				6B8616352A063EC9008CD986 /* AccountViewController.swift in Sources */,
 				6BC84AD92A054FD8003FD456 /* UserDB.swift in Sources */,
 				6BC84AD42A0542B3003FD456 /* UIViewControllerExtension.swift in Sources */,
+				6BF42DCE2A2388F9009A720B /* User.swift in Sources */,
 				6B86162B2A063D1D008CD986 /* SearchResultViewController.swift in Sources */,
 				6BC84ADF2A0558C5003FD456 /* UserProfileViewController.swift in Sources */,
 				6BC7EAD02A07A44E001EE344 /* PostDB.swift in Sources */,
 				6BE16DEE2A040DA40072782A /* TextFieldValidationUtils.swift in Sources */,
+				6BF42DCC2A2388F0009A720B /* Post.swift in Sources */,
 				6B86161B2A05EF96008CD986 /* SearchViewController.swift in Sources */,
 				6B8F89112A09388C009EFBF1 /* StorageDB.swift in Sources */,
 			);

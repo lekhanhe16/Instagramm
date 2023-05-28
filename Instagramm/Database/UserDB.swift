@@ -13,7 +13,7 @@ class UserDB {
     private init() {}
 
     static let shared = UserDB()
-    private var curUser: [String: Any]?
+    private var curUser: User?
     private let db = Firestore.firestore()
     
     func isUsernameValid(username: String, handler: @escaping (Bool) -> Void) {
@@ -56,20 +56,13 @@ class UserDB {
         }
     }
     
-    func getUserByUserID(id: String, completion: @escaping ([String:Any]?) -> Void) {
+    func getUserByUserID(id: String, completion: @escaping (User?) -> Void) {
         db.collection("users").document(id).getDocument { ds, err in
             if err != nil {
                 completion(nil)
             }
             else if let doc = ds {
-                completion([
-                    "username": doc.get("username") as! String,
-                    "uid": doc.get("uid") as! String,
-                    "followers": doc.get("followers") as! [String],
-                    "following": doc.get("following") as! [String],
-                    "posts": doc.get("posts") as! [String],
-                    "user_id": doc.documentID
-                ])
+                completion(User(uid: doc.get("uid") as! String, followers: doc.get("followers") as! [String], following: doc.get("following") as! [String], posts: doc.get("posts") as! [String], username: doc.get("username") as! String, user_id: doc.documentID))
             }
         }
     }
@@ -93,23 +86,16 @@ class UserDB {
         }
     }
 
-    func searchForUsersWithName(withName: String, handler: @escaping ([[String: Any]]?, Error?) -> Void) {
+    func searchForUsersWithName(withName: String, handler: @escaping ([User]?, Error?) -> Void) {
         db.collection("users").getDocuments { [weak self] querySnapshot, error in
             if error != nil {
                 handler(nil, error)
             }
             if let querySnapshot {
-                var result = [[String: Any]]()
+                var result = [User]()
                 for doc in querySnapshot.documents {
-                    if let username = doc.get("username") as? String, username.contains(withName), username != self?.curUser!["username"] as! String {
-                        result.append([
-                            "username": doc.get("username") as! String,
-                            "uid": doc.get("uid") as! String,
-                            "followers": doc.get("followers") as! [String],
-                            "following": doc.get("following") as! [String],
-                            "posts": doc.get("posts") as! [String],
-                            "user_id": doc.documentID
-                        ])
+                    if let username = doc.get("username") as? String, username.contains(withName), username != self?.curUser?.username {
+                        result.append(User(uid: doc.get("uid") as! String, followers: doc.get("followers") as! [String], following: doc.get("following") as! [String], posts: doc.get("posts") as! [String], username: doc.get("username") as! String, user_id: doc.documentID))
                     }
                 }
                 handler(result, nil)
@@ -124,17 +110,17 @@ class UserDB {
         db.collection("users").addDocument(data: [
             "username": username,
             "uid": uid,
-            "followers": [],
-            "following": [],
-            "posts": []
+            "followers": [String](),
+            "following": [String](),
+            "posts": [String]()
         ])
     }
 
-    func setCurrentUser(user: [String: Any]) {
+    func setCurrentUser(user: User) {
         curUser = user
     }
 
-    func getCurrentUser(uid: String) -> [String: Any]? {
+    func getCurrentUser(uid: String) -> User? {
         return curUser
     }
     
@@ -144,14 +130,7 @@ class UserDB {
             if let querySnapshot {
                 let doc = querySnapshot.documents.first(where: { $0.get("username") != nil && ($0.get("uid") as! String) == Auth.auth().currentUser?.uid})!
                     
-                self?.curUser = [
-                    "username": doc.get("username") as! String,
-                    "uid": doc.get("uid") as! String,
-                    "followers": doc.get("followers") as! [String],
-                    "following": doc.get("following") as! [String],
-                    "posts": doc.get("posts") as! [String],
-                    "user_id": doc.documentID
-                ]
+                self?.curUser = User(uid: doc.get("uid") as! String, followers: doc.get("followers") as! [String], following: doc.get("following") as! [String], posts: doc.get("posts") as! [String], username: doc.get("username") as! String, user_id: doc.documentID)
                 completion()
             }
         }
