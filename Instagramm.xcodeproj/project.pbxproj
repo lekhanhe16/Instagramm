@@ -23,6 +23,10 @@
 		6B8616312A063EA7008CD986 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8616302A063EA7008CD986 /* Accounts.storyboard */; };
 		6B8616332A063EBF008CD986 /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8616322A063EBF008CD986 /* ForYouViewController.swift */; };
 		6B8616352A063EC9008CD986 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8616342A063EC9008CD986 /* AccountViewController.swift */; };
+		6B8D03B02A2CA53400FE6C36 /* DirectMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8D03AF2A2CA53400FE6C36 /* DirectMessage.storyboard */; };
+		6B8D03B22A2CA57E00FE6C36 /* DirectMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D03B12A2CA57E00FE6C36 /* DirectMessageViewController.swift */; };
+		6B8D03B52A2CC75C00FE6C36 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D03B42A2CC75C00FE6C36 /* Sender.swift */; };
+		6B8D03B72A2CC7AE00FE6C36 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D03B62A2CC7AE00FE6C36 /* Message.swift */; };
 		6B8F890E2A093450009EFBF1 /* MediaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F890C2A093450009EFBF1 /* MediaViewCell.swift */; };
 		6B8F890F2A093450009EFBF1 /* MediaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F890D2A093450009EFBF1 /* MediaViewCell.xib */; };
 		6B8F89112A09388C009EFBF1 /* StorageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F89102A09388C009EFBF1 /* StorageDB.swift */; };
@@ -72,6 +76,10 @@
 		6B8616302A063EA7008CD986 /* Accounts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
 		6B8616322A063EBF008CD986 /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
 		6B8616342A063EC9008CD986 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		6B8D03AF2A2CA53400FE6C36 /* DirectMessage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DirectMessage.storyboard; sourceTree = "<group>"; };
+		6B8D03B12A2CA57E00FE6C36 /* DirectMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageViewController.swift; sourceTree = "<group>"; };
+		6B8D03B42A2CC75C00FE6C36 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		6B8D03B62A2CC7AE00FE6C36 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		6B8F890C2A093450009EFBF1 /* MediaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewCell.swift; sourceTree = "<group>"; };
 		6B8F890D2A093450009EFBF1 /* MediaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaViewCell.xib; sourceTree = "<group>"; };
 		6B8F89102A09388C009EFBF1 /* StorageDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDB.swift; sourceTree = "<group>"; };
@@ -186,6 +194,24 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		6B8D03AE2A2CA4E600FE6C36 /* DirectMessage */ = {
+			isa = PBXGroup;
+			children = (
+				6B8D03AF2A2CA53400FE6C36 /* DirectMessage.storyboard */,
+				6B8D03B12A2CA57E00FE6C36 /* DirectMessageViewController.swift */,
+			);
+			path = DirectMessage;
+			sourceTree = "<group>";
+		};
+		6B8D03B32A2CC73600FE6C36 /* DirectMessage */ = {
+			isa = PBXGroup;
+			children = (
+				6B8D03B42A2CC75C00FE6C36 /* Sender.swift */,
+				6B8D03B62A2CC7AE00FE6C36 /* Message.swift */,
+			);
+			path = DirectMessage;
+			sourceTree = "<group>";
+		};
 		6BC84ACF2A053742003FD456 /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +324,7 @@
 		6BE16DE62A03FDEA0072782A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				6B8D03AE2A2CA4E600FE6C36 /* DirectMessage */,
 				6BE16DF32A041FB70072782A /* PersonalProfile */,
 				6BE16DF22A041FAA0072782A /* Reels */,
 				6BE16DF12A041F750072782A /* NewPost */,
@@ -375,6 +402,7 @@
 		6BF42DCA2A2388DA009A720B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				6B8D03B32A2CC73600FE6C36 /* DirectMessage */,
 				6BF42DCB2A2388F0009A720B /* Post.swift */,
 				6BF42DCD2A2388F9009A720B /* User.swift */,
 			);
@@ -462,6 +490,7 @@
 				6BC7EACA2A077990001EE344 /* CaptionCreating.storyboard in Resources */,
 				6BC84AE52A057265003FD456 /* MyCell.xib in Resources */,
 				6BE16DE82A0400150072782A /* Login.storyboard in Resources */,
+				6B8D03B02A2CA53400FE6C36 /* DirectMessage.storyboard in Resources */,
 				6B8F890F2A093450009EFBF1 /* MediaViewCell.xib in Resources */,
 				6B8616212A061EC5008CD986 /* SearchSuggestionsView.xib in Resources */,
 				6BE16DD42A03F7E50072782A /* Main.storyboard in Resources */,
@@ -519,7 +548,9 @@
 			files = (
 				6BC84ADD2A0558A4003FD456 /* MyProfileViewController.swift in Sources */,
 				6B1D55252A096D070004F4E8 /* FeedCell.swift in Sources */,
+				6B8D03B22A2CA57E00FE6C36 /* DirectMessageViewController.swift in Sources */,
 				6BC7EACD2A077BBA001EE344 /* UploadMediaCell.swift in Sources */,
+				6B8D03B52A2CC75C00FE6C36 /* Sender.swift in Sources */,
 				6BC84ACE2A0535C6003FD456 /* SignUpViewController.swift in Sources */,
 				6BE16DF52A0420500072782A /* NewFeedViewController.swift in Sources */,
 				6BC84AE42A057265003FD456 /* MyCell.swift in Sources */,
@@ -535,6 +566,7 @@
 				6BE16DCD2A03F7E50072782A /* AppDelegate.swift in Sources */,
 				6BE16DEC2A0401260072782A /* SignInViewController.swift in Sources */,
 				6B8616352A063EC9008CD986 /* AccountViewController.swift in Sources */,
+				6B8D03B72A2CC7AE00FE6C36 /* Message.swift in Sources */,
 				6BC84AD92A054FD8003FD456 /* UserDB.swift in Sources */,
 				6BC84AD42A0542B3003FD456 /* UIViewControllerExtension.swift in Sources */,
 				6BF42DCE2A2388F9009A720B /* User.swift in Sources */,

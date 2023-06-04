@@ -14,6 +14,7 @@ target 'Instagramm' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Kingfisher'
+  pod 'MessageKit'
 end
 
 post_install do |installer|

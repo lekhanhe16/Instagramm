@@ -14,6 +14,13 @@ class UserProfileViewController: UIViewController {
     var dataSet1 = [Post]()
     let dataSet2 = ["brown", "cyan"]
     
+    @IBAction func btnSendDMClick(_ sender: UIButton) {
+        let dmVC = UIStoryboard(name: "DirectMessage", bundle: nil).instantiateViewController(withIdentifier: "DMVC")
+        dmVC.modalPresentationStyle = .fullScreen
+        dmVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(dmVC, animated: true)
+    }
+    
     @IBOutlet weak var numOfPost: UILabel!
     @IBOutlet weak var numOfFollowers: UILabel!
     @IBOutlet weak var numOfFollowing: UILabel!
@@ -60,7 +67,11 @@ class UserProfileViewController: UIViewController {
         }
         
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        title = ""
+    }
     func loadData1() {
         print(dataSet1.compactMap {$0.post_id})
         snapShot = NSDiffableDataSourceSnapshot()
@@ -116,8 +127,12 @@ class UserProfileViewController: UIViewController {
         return NSCollectionLayoutSection(group: group)
     }
     
-    func setUpView() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         title = user.username
+    }
+    func setUpView() {
+        
         // Do any additional setup after loading the view.
 //        print(user.followers)
         if user.followers.contains(follower) {
