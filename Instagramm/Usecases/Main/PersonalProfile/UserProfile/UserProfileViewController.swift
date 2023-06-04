@@ -15,9 +15,10 @@ class UserProfileViewController: UIViewController {
     let dataSet2 = ["brown", "cyan"]
     
     @IBAction func btnSendDMClick(_ sender: UIButton) {
-        let dmVC = UIStoryboard(name: "DirectMessage", bundle: nil).instantiateViewController(withIdentifier: "DMVC")
+        let dmVC = UIStoryboard(name: "DirectMessage", bundle: nil).instantiateViewController(withIdentifier: "DMVC") as! DirectMessageViewController
         dmVC.modalPresentationStyle = .fullScreen
         dmVC.hidesBottomBarWhenPushed = true
+        dmVC.receiver = following
         navigationController?.pushViewController(dmVC, animated: true)
     }
     

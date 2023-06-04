@@ -20,7 +20,6 @@ class PostDB {
 
     var fetchedPosts = Set<String>()
 
-    private var isFetching = false
     private var fs: Firestore!
     private var storageRef: StorageReference!
     private var dbRef: DatabaseReference!

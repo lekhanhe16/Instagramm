@@ -120,7 +120,7 @@ class UserDB {
         curUser = user
     }
 
-    func getCurrentUser(uid: String) -> User? {
+    func getCurrentUser(uid: String = "") -> User? {
         return curUser
     }
     

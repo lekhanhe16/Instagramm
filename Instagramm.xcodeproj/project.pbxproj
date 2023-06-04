@@ -27,6 +27,7 @@
 		6B8D03B22A2CA57E00FE6C36 /* DirectMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D03B12A2CA57E00FE6C36 /* DirectMessageViewController.swift */; };
 		6B8D03B52A2CC75C00FE6C36 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D03B42A2CC75C00FE6C36 /* Sender.swift */; };
 		6B8D03B72A2CC7AE00FE6C36 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D03B62A2CC7AE00FE6C36 /* Message.swift */; };
+		6B8D03B92A2CEE2600FE6C36 /* MessageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D03B82A2CEE2600FE6C36 /* MessageDB.swift */; };
 		6B8F890E2A093450009EFBF1 /* MediaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F890C2A093450009EFBF1 /* MediaViewCell.swift */; };
 		6B8F890F2A093450009EFBF1 /* MediaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F890D2A093450009EFBF1 /* MediaViewCell.xib */; };
 		6B8F89112A09388C009EFBF1 /* StorageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F89102A09388C009EFBF1 /* StorageDB.swift */; };
@@ -80,6 +81,7 @@
 		6B8D03B12A2CA57E00FE6C36 /* DirectMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageViewController.swift; sourceTree = "<group>"; };
 		6B8D03B42A2CC75C00FE6C36 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		6B8D03B62A2CC7AE00FE6C36 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		6B8D03B82A2CEE2600FE6C36 /* MessageDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDB.swift; sourceTree = "<group>"; };
 		6B8F890C2A093450009EFBF1 /* MediaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewCell.swift; sourceTree = "<group>"; };
 		6B8F890D2A093450009EFBF1 /* MediaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaViewCell.xib; sourceTree = "<group>"; };
 		6B8F89102A09388C009EFBF1 /* StorageDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDB.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				6BC84AD82A054FD8003FD456 /* UserDB.swift */,
 				6BC7EACF2A07A44E001EE344 /* PostDB.swift */,
 				6B8F89102A09388C009EFBF1 /* StorageDB.swift */,
+				6B8D03B82A2CEE2600FE6C36 /* MessageDB.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				6BE16DEC2A0401260072782A /* SignInViewController.swift in Sources */,
 				6B8616352A063EC9008CD986 /* AccountViewController.swift in Sources */,
 				6B8D03B72A2CC7AE00FE6C36 /* Message.swift in Sources */,
+				6B8D03B92A2CEE2600FE6C36 /* MessageDB.swift in Sources */,
 				6BC84AD92A054FD8003FD456 /* UserDB.swift in Sources */,
 				6BC84AD42A0542B3003FD456 /* UIViewControllerExtension.swift in Sources */,
 				6BF42DCE2A2388F9009A720B /* User.swift in Sources */,
