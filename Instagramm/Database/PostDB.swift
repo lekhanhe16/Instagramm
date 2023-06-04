@@ -82,7 +82,7 @@ class PostDB {
         fs.collection("posts")
             .order(by: "post_date", descending: true)
             .whereField("author", isEqualTo: userId)
-            .limit(to: 25).getDocuments { qs, _ in
+            .getDocuments { qs, _ in
                 if let qs {
                     var result = [Post]()
                     for doc in qs.documents {
@@ -167,7 +167,7 @@ class PostDB {
         
 //        Database.database().reference().child("post_comments").child(newId).setValue([String:Any]())
         print("hellooo")
-        dbRef.child("post_comments/\(newId)").childByAutoId().setValue([String : Any]()) { err, ref in
+        dbRef.child("post_comments/8vuwtgn8qOxupoNVyhrk/-NWXscotLxjOPtAMvd3K").childByAutoId().setValue(["12314" : "33"]) { err, ref in
             if let err = err {
                 print(err.localizedDescription)
             }

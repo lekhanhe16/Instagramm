@@ -23,6 +23,7 @@
 		6B8616312A063EA7008CD986 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8616302A063EA7008CD986 /* Accounts.storyboard */; };
 		6B8616332A063EBF008CD986 /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8616322A063EBF008CD986 /* ForYouViewController.swift */; };
 		6B8616352A063EC9008CD986 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8616342A063EC9008CD986 /* AccountViewController.swift */; };
+		6B8D03AD2A2C9F1F00FE6C36 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D03AC2A2C9F1F00FE6C36 /* Comment.swift */; };
 		6B8F890E2A093450009EFBF1 /* MediaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F890C2A093450009EFBF1 /* MediaViewCell.swift */; };
 		6B8F890F2A093450009EFBF1 /* MediaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F890D2A093450009EFBF1 /* MediaViewCell.xib */; };
 		6B8F89112A09388C009EFBF1 /* StorageDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F89102A09388C009EFBF1 /* StorageDB.swift */; };
@@ -72,6 +73,7 @@
 		6B8616302A063EA7008CD986 /* Accounts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
 		6B8616322A063EBF008CD986 /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
 		6B8616342A063EC9008CD986 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		6B8D03AC2A2C9F1F00FE6C36 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		6B8F890C2A093450009EFBF1 /* MediaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewCell.swift; sourceTree = "<group>"; };
 		6B8F890D2A093450009EFBF1 /* MediaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaViewCell.xib; sourceTree = "<group>"; };
 		6B8F89102A09388C009EFBF1 /* StorageDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDB.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			children = (
 				6BF42DCB2A2388F0009A720B /* Post.swift */,
 				6BF42DCD2A2388F9009A720B /* User.swift */,
+				6B8D03AC2A2C9F1F00FE6C36 /* Comment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				6B86161F2A061EB2008CD986 /* SearchSuggestionsView.swift in Sources */,
 				6BC84AD72A054BAF003FD456 /* FirebaseDB.swift in Sources */,
 				6B28B9F42A06EEA700C2E4D4 /* MediaPickerViewController.swift in Sources */,
+				6B8D03AD2A2C9F1F00FE6C36 /* Comment.swift in Sources */,
 				6BC7EAC82A077983001EE344 /* CaptionCreatingViewController.swift in Sources */,
 				6B8616242A062546008CD986 /* SuggestionCell.swift in Sources */,
 				6B8616332A063EBF008CD986 /* ForYouViewController.swift in Sources */,
