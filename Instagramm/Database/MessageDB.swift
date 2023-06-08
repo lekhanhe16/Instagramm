@@ -31,7 +31,7 @@ class MessageDB {
         dbRef.child("direct_messages/\(chatId))")
             .childByAutoId().setValue(value) { error, dbref in
                 if error != nil {
-                    print(error?.localizedDescription)
+                    print(error!.localizedDescription)
                     completionHandler(nil, error!)
                 }
                 else {
@@ -42,33 +42,33 @@ class MessageDB {
             }
     }
 
-    func getConversation(chatId: String, handler: @escaping ([Message]) -> Void) {
-        print("getconv")
-        dbRef.child("direct_messages/\(chatId))").getData(completion:) { error, ds in
-            if error != nil {
-                print(error!.localizedDescription)
-                handler([])
-            }
-            else {
-                if let ds, let conv = ds.value as? [String: Any] {
-                    var res = [Message]()
-                    for msg in conv {
-                        let value = msg.value as! [String: Any]
-                        let id = value["sender"] as! String
-                        let sendDate = value["sendDate"] as! Double
-                        let mess = value["message"] as! String
-                        let mes = Message(sender: Sender(senderId: id, displayName: ""),
-                                          messageId: msg.key,
-                                          sentDate: Date(timeIntervalSince1970: sendDate),
-                                          kind: .text(mess))
-                        print(mes)
-                        res.append(mes)
-                    }
-                    handler(res)
-                }
-            }
-        }
-    }
+//    func getConversation(chatId: String, handler: @escaping ([Message]) -> Void) {
+//        print("getconv")
+//        dbRef.child("direct_messages/\(chatId))").getData(completion:) { error, ds in
+//            if error != nil {
+//                print(error!.localizedDescription)
+//                handler([])
+//            }
+//            else {
+//                if let ds, let conv = ds.value as? [String: Any] {
+//                    var res = [Message]()
+//                    for msg in conv {
+//                        let value = msg.value as! [String: Any]
+//                        let id = value["sender"] as! String
+//                        let sendDate = value["sendDate"] as! Double
+//                        let mess = value["message"] as! String
+//                        let mes = Message(sender: Sender(senderId: id, displayName: ""),
+//                                          messageId: msg.key,
+//                                          sentDate: Date(timeIntervalSince1970: sendDate),
+//                                          kind: .text(mess))
+////                        print(mes)
+//                        res.append(mes)
+//                    }
+//                    handler(res)
+//                }
+//            }
+//        }
+//    }
 
     func subcribeToNewMsg(chatId: String, handler: @escaping ([Message]) -> Void) {
         dbRef.child("direct_messages/\(chatId))").observe(.childAdded) { ds in
@@ -81,7 +81,7 @@ class MessageDB {
                                   messageId: ds.key,
                                   sentDate: Date(timeIntervalSince1970: sendDate),
                                   kind: .text(mess))
-                print(mes)
+//                print(mes)
                 res.append(mes)
                 handler(res)
             }
