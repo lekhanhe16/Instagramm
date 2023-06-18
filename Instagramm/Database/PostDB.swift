@@ -20,7 +20,6 @@ class PostDB {
 
     var fetchedPosts = Set<String>()
 
-    private var isFetching = false
     private var fs: Firestore!
     private var storageRef: StorageReference!
     private var dbRef: DatabaseReference!
@@ -166,8 +165,8 @@ class PostDB {
         let user = UserDB.shared.getCurrentUser(uid: "")!.user_id
         
 //        Database.database().reference().child("post_comments").child(newId).setValue([String:Any]())
-        print("hellooo")
-        dbRef.child("post_comments/8vuwtgn8qOxupoNVyhrk/-NWXscotLxjOPtAMvd3K").childByAutoId().setValue(["12314" : "33"]) { err, ref in
+
+        dbRef.child("post_comments/\(newId)").childByAutoId().setValue([String : Any]()) { err, ref in
             if let err = err {
                 print(err.localizedDescription)
             }

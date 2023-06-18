@@ -120,6 +120,9 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Message"/>
+                                        <connections>
+                                            <action selector="btnSendDMClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5Az-90-joj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

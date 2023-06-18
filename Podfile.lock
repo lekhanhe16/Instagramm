@@ -714,6 +714,9 @@ PODS:
     - Libuv-gRPC (= 0.0.10)
   - gRPC-Core/Interface (1.44.0)
   - GTMSessionFetcher/Core (3.0.0)
+  - InputBarAccessoryView (5.1.0):
+    - InputBarAccessoryView/Core (= 5.1.0)
+  - InputBarAccessoryView/Core (5.1.0)
   - Kingfisher (7.6.1)
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
@@ -724,6 +727,8 @@ PODS:
   - Libuv-gRPC/Interface (0.0.10)
   - LZViewPager (1.2.5):
     - SnapKit (~> 5.0.0)
+  - MessageKit (3.3.0):
+    - InputBarAccessoryView (~> 5.1.0)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
@@ -745,6 +750,7 @@ DEPENDENCIES:
   - FirebaseFirestore
   - Kingfisher
   - LZViewPager
+  - MessageKit
   - RxCocoa
   - RxSwift
 
@@ -766,10 +772,12 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - InputBarAccessoryView
     - Kingfisher
     - leveldb-library
     - Libuv-gRPC
     - LZViewPager
+    - MessageKit
     - nanopb
     - PromisesObjC
     - RxCocoa
@@ -794,10 +802,12 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   GTMSessionFetcher: c1edebe64e9fb4e8f6415d018edf1fd3eac074a1
+  InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   Kingfisher: 93a3c6d0d551658a31e19f21747e1d15cb39d525
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   LZViewPager: 89ddd98246d54b52bde14c8d91702f946d6f8893
+  MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
@@ -805,6 +815,6 @@ SPEC CHECKSUMS:
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: b6f58b86a5656e7bce1cf4898a9a5e5cb1826ebd
+PODFILE CHECKSUM: d3462e3463c16eb7d62c92eb404b8db9aa7014ef
 
 COCOAPODS: 1.11.3

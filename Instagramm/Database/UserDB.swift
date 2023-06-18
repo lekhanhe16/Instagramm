@@ -120,7 +120,7 @@ class UserDB {
         curUser = user
     }
 
-    func getCurrentUser(uid: String) -> User? {
+    func getCurrentUser(uid: String = "") -> User? {
         return curUser
     }
     
@@ -131,6 +131,9 @@ class UserDB {
                 let doc = querySnapshot.documents.first(where: { $0.get("username") != nil && ($0.get("uid") as! String) == Auth.auth().currentUser?.uid})!
                     
                 self?.curUser = User(uid: doc.get("uid") as! String, followers: doc.get("followers") as! [String], following: doc.get("following") as! [String], posts: doc.get("posts") as! [String], username: doc.get("username") as! String, user_id: doc.documentID)
+                self?.curUser?.direct_msgs = doc.get("direct_messages") as! [String]
+//                print(self?.curUser)
+//                ConversationDB.shared.getConversations(convs: (self?.curUser!.direct_msgs)!)
                 completion()
             }
         }

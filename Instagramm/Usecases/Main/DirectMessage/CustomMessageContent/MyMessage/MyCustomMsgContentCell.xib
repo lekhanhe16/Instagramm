@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mycustom" id="gTV-IL-0wX" customClass="MyCustomMsgContentCell" customModule="Instagramm" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awq-6L-g98">
+                        <rect key="frame" x="188.33333333333334" y="0.0" width="61.666666666666657" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="gct-fO-OVf">
+                                <rect key="frame" x="10" y="8" width="41.666666666666664" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="outgoingMessageBackground"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gct-fO-OVf" secondAttribute="trailing" constant="10" id="GHs-6R-g4p"/>
+                            <constraint firstAttribute="bottom" secondItem="gct-fO-OVf" secondAttribute="bottom" constant="8" id="gbH-rY-kv3"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="jcp-E4-ORq"/>
+                            <constraint firstItem="gct-fO-OVf" firstAttribute="leading" secondItem="awq-6L-g98" secondAttribute="leading" constant="10" id="tCj-md-OLd"/>
+                            <constraint firstItem="gct-fO-OVf" firstAttribute="top" secondItem="awq-6L-g98" secondAttribute="top" constant="8" id="xJl-Vt-s9C"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="awq-6L-g98" secondAttribute="bottom" id="4bI-mE-dnV"/>
+                <constraint firstAttribute="trailing" secondItem="awq-6L-g98" secondAttribute="trailing" id="Eg6-FE-ogJ"/>
+                <constraint firstItem="awq-6L-g98" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="efG-0E-rK6"/>
+                <constraint firstItem="awq-6L-g98" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nZl-QT-I6L"/>
+            </constraints>
+            <size key="customSize" width="250" height="40"/>
+            <connections>
+                <outlet property="body" destination="gct-fO-OVf" id="7O9-u4-9dP"/>
+            </connections>
+            <point key="canvasLocation" x="44.274809160305338" y="-35.91549295774648"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="outgoingMessageBackground">
+            <color red="0.20399998128414154" green="0.77999997138977051" blue="0.34899997711181641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
