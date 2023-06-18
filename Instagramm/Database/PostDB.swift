@@ -81,7 +81,7 @@ class PostDB {
         fs.collection("posts")
             .order(by: "post_date", descending: true)
             .whereField("author", isEqualTo: userId)
-            .limit(to: 25).getDocuments { qs, _ in
+            .getDocuments { qs, _ in
                 if let qs {
                     var result = [Post]()
                     for doc in qs.documents {
@@ -165,6 +165,7 @@ class PostDB {
         let user = UserDB.shared.getCurrentUser(uid: "")!.user_id
         
 //        Database.database().reference().child("post_comments").child(newId).setValue([String:Any]())
+
         dbRef.child("post_comments/\(newId)").childByAutoId().setValue([String : Any]()) { err, ref in
             if let err = err {
                 print(err.localizedDescription)

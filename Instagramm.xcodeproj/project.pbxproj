@@ -484,6 +484,7 @@
 				6B8D03B32A2CC73600FE6C36 /* DirectMessage */,
 				6BF42DCB2A2388F0009A720B /* Post.swift */,
 				6BF42DCD2A2388F9009A720B /* User.swift */,
+				6B8D03AC2A2C9F1F00FE6C36 /* Comment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -649,6 +650,7 @@
 				6B8F890E2A093450009EFBF1 /* MediaViewCell.swift in Sources */,
 				6B86161F2A061EB2008CD986 /* SearchSuggestionsView.swift in Sources */,
 				6B28B9F42A06EEA700C2E4D4 /* MediaPickerViewController.swift in Sources */,
+				6B8D03AD2A2C9F1F00FE6C36 /* Comment.swift in Sources */,
 				6BC7EAC82A077983001EE344 /* CaptionCreatingViewController.swift in Sources */,
 				6B8616242A062546008CD986 /* SuggestionCell.swift in Sources */,
 				6B8616332A063EBF008CD986 /* ForYouViewController.swift in Sources */,
