@@ -14,3 +14,9 @@ protocol BaseContentCell: UICollectionViewCell {
     static func nib() -> UINib
     func configure(with message: MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView)
 }
+
+extension BaseContentCell {
+    func configure(with message: MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView) {
+        
+    }
+}

@@ -10,52 +10,54 @@ import MessageKit
 import UIKit
 
 class DirectMessageViewController: MessagesViewController {
+    var isTyping = false
     var curSender: Sender!
-    var jack = Sender(senderId: "1234", displayName: "Jack")
-    var ben = Sender(senderId: "321", displayName: "Ben")
     var receiver: String!
     var messages = [Message]()
+    var conversationId = ""
     override func viewDidLoad() {
         curSender = Sender(senderId: UserDB.shared.getCurrentUser()?.user_id ?? "", displayName: UserDB.shared.getCurrentUser()?.username ?? "")
+        conversationId = genChatId(re: receiver, se: curSender.senderId)
         subcribeToNewMessage()
         setUpMessagesCollectionView()
+        subcribeSenderTyping()
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-//        getConversation()
     }
 
-//    func getConversation() {
-//        // Mock
-    ////        messages.append(Message(sender: curSender, messageId: "2", sentDate: Date().addingTimeInterval(-80009), kind: .text("hello")))
-    ////        messages.append(Message(sender: jack, messageId: "2", sentDate: Date().addingTimeInterval(-70000), kind: .text("hello khanh")))
-    ////        messages.append(Message(sender: jack, messageId: "2", sentDate: Date().addingTimeInterval(-60000), kind: .text("how are you")))
-//
-//        MessageDB.shared.getConversation(chatId: genChatId(re: receiver, se: curSender.senderId)) {
-//            [weak self] conv in
-//            if !conv.isEmpty {
-//                self?.messages.append(contentsOf: conv)
-//                DispatchQueue.main.async {
-//                    self?.messagesCollectionView.reloadData()
-//                    self?.messagesCollectionView.scrollToBottom(animated: false)
-//                }
-//            }
-//        }
-//    }
-
-    func subcribeToNewMessage() {
-        MessageDB.shared.subcribeToNewMsg(chatId: genChatId(re: receiver, se: curSender.senderId)) { [weak self] conv in
-            if !conv.isEmpty {
-                self?.messages.append(contentsOf: conv)
-                self?.messages.sort(by: { m1, m2 in
-                    m1.sentDate.timeIntervalSince1970 > m2.sentDate.timeIntervalSince1970
-                })
+    func subcribeSenderTyping() {
+        ConversationDB.shared.subcribeSenderTyping(cid: conversationId, sender: receiver) { [weak self] istyping in
+            if istyping {
                 DispatchQueue.main.async {
-                    self?.messagesCollectionView.reloadData()
-//                    self?.messagesCollectionView.scrollToBottom(animated: false)
+                    self?.setTypingIndicatorViewHidden(false, animated: true)
+                    self?.messagesCollectionView.scrollToBottom(animated: false)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    self?.setTypingIndicatorViewHidden(true, animated: true)
                 }
             }
         }
+    }
+
+    func subcribeToNewMessage() {
+        MessageDB.shared.subcribeToNewMsg(chatId: conversationId) { [weak self] conv in
+            if !conv.isEmpty {
+                self?.messages.append(contentsOf: conv)
+                self?.messages.sort(by: { m1, m2 in
+                    m1.sentDate.timeIntervalSince1970 < m2.sentDate.timeIntervalSince1970
+                })
+                DispatchQueue.main.async {
+                    self?.messagesCollectionView.reloadData()
+                    self?.messagesCollectionView.scrollToBottom(animated: false)
+                }
+            }
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ConversationDB.shared.setIsSenderTyping(cid: conversationId, sender: curSender.senderId, isTyping: false, completion: {})
     }
 
     func genChatId(re: String, se: String) -> String {
@@ -82,7 +84,7 @@ class DirectMessageViewController: MessagesViewController {
             layout.setMessageOutgoingAvatarSize(CGSize(width: 16, height: 16))
             layout.setMessageIncomingAvatarSize(CGSize(width: 16, height: 16))
         }
-        messagesCollectionView.layer.setAffineTransform(CGAffineTransform(rotationAngle: -.pi))
+//        messagesCollectionView.layer.setAffineTransform(CGAffineTransform(rotationAngle: -.pi))
     }
 
 //    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -116,12 +118,12 @@ class DirectMessageViewController: MessagesViewController {
             case curSender.senderId:
                 let my = dequeueRegisteredCell(collectionView: messagesCollectionView, msg: message, indexPath: indexPath, reuseIdentifier: MyCustomMsgContentCell.reuseIdentifier) as! MyCustomMsgContentCell
                 my.configure(with: message, at: indexPath, and: messagesCollectionView)
-                my.layer.setAffineTransform(CGAffineTransform(rotationAngle: .pi))
+//                my.layer.setAffineTransform(CGAffineTransform(rotationAngle: .pi))
                 return my
             default:
                 let user = dequeueRegisteredCell(collectionView: messagesCollectionView, msg: message, indexPath: indexPath, reuseIdentifier: UserCustomMsgContentCell.reuseIdentifier) as! UserCustomMsgContentCell
                 user.configure(with: message, at: indexPath, and: messagesCollectionView)
-                user.layer.setAffineTransform(CGAffineTransform(rotationAngle: .pi))
+//                user.layer.setAffineTransform(CGAffineTransform(rotationAngle: .pi))
                 return user
         }
 
@@ -141,12 +143,30 @@ extension DirectMessageViewController: MessageCellDelegate {}
 extension DirectMessageViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let newMessage = Message(sender: curSender, messageId: "", sentDate: .now, kind: .text(text))
-        MessageDB.shared.sendMessage(chatId: genChatId(re: receiver, se: curSender.senderId), message: newMessage) { _, error in
-            if error != nil {}
-            else {
-                inputBar.inputTextView.text = ""
+        print(text)
+        if messages.isEmpty {
+            MessageDB.shared.createConversation(chatId: conversationId, user1: curSender.senderId, user2: receiver) { _ in
             }
         }
+        ConversationDB.shared.setIsSenderTyping(cid: conversationId, sender: curSender.senderId, isTyping: false, completion: { [weak self] in
+            MessageDB.shared.sendMessage(chatId: self?.conversationId ?? "", message: newMessage) { _, error in
+                if error != nil {}
+                else {
+                    inputBar.inputTextView.text = ""
+                }
+            }
+        })
+    }
+
+    func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+        messagesCollectionView.scrollToBottom(animated: false)
+        if !text.isEmpty {
+            isEditing = true
+        }
+        else {
+            isEditing = false
+        }
+        ConversationDB.shared.setIsSenderTyping(cid: conversationId, sender: curSender.senderId, isTyping: isEditing, completion: {})
     }
 }
 

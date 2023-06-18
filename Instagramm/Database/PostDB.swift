@@ -165,7 +165,6 @@ class PostDB {
         let user = UserDB.shared.getCurrentUser(uid: "")!.user_id
         
 //        Database.database().reference().child("post_comments").child(newId).setValue([String:Any]())
-        print("hellooo")
         dbRef.child("post_comments/\(newId)").childByAutoId().setValue([String : Any]()) { err, ref in
             if let err = err {
                 print(err.localizedDescription)

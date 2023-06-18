@@ -7,15 +7,43 @@
 
 import FirebaseDatabase
 import Foundation
+import FirebaseFirestore
 
 class MessageDB {
     private var dbRef: DatabaseReference!
+    private var fs: Firestore!
     private init() {
         dbRef = Database.database().reference()
+        fs = Firestore.firestore()
     }
 
     static let shared = MessageDB()
 
+    func createConversation(chatId: String, user1: String, user2: String, completion: @escaping (Bool) -> Void) {
+        ConversationDB.shared.createConversation(cid: chatId, senders: [Sender(senderId: user1, displayName: ""), Sender(senderId: user2, displayName: "")])
+        fs.collection("users").document(user1).getDocument { [weak self] snapshot, error in
+            
+            if let snapshot = snapshot {
+                self?.insertConversation(chatId: chatId, snapshot: snapshot)
+            }
+        }
+        
+        fs.collection("users").document(user2).getDocument { [weak self] snapshot, error in
+            
+            if let snapshot = snapshot {
+                self?.insertConversation(chatId: chatId, snapshot: snapshot)
+            }
+        }
+    }
+    
+    func insertConversation(chatId: String, snapshot: DocumentSnapshot) {
+        let data = snapshot.data()!
+        var dms = data["direct_messages"] as! [String]
+        dms.append(chatId)
+        
+        snapshot.reference.updateData(["direct_messages":dms])
+    }
+    
     func sendMessage(chatId: String, message: Message, completionHandler: @escaping (String?, Error?) -> Void) {
         var val: Any?
         switch message.kind {

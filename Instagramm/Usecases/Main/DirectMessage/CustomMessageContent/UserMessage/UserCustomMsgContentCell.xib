@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6j-IB-Y11">
-                        <rect key="frame" x="0.0" y="0.0" width="65.333333333333329" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="61.333333333333336" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="E2d-HS-Y18">
-                                <rect key="frame" x="16.000000000000004" y="8" width="41.333333333333343" height="24"/>
+                                <rect key="frame" x="10" y="8" width="41.333333333333329" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,9 +33,14 @@
                             <constraint firstAttribute="bottom" secondItem="E2d-HS-Y18" secondAttribute="bottom" constant="8" id="2H9-rQ-DC4"/>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="ds2-6N-caB"/>
                             <constraint firstItem="E2d-HS-Y18" firstAttribute="top" secondItem="i6j-IB-Y11" secondAttribute="top" constant="8" id="gL6-bV-Bv3"/>
-                            <constraint firstAttribute="trailing" secondItem="E2d-HS-Y18" secondAttribute="trailing" constant="8" id="lkU-e2-HUk"/>
-                            <constraint firstItem="E2d-HS-Y18" firstAttribute="leading" secondItem="i6j-IB-Y11" secondAttribute="leading" constant="16" id="p0C-Tz-6qe"/>
+                            <constraint firstAttribute="trailing" secondItem="E2d-HS-Y18" secondAttribute="trailing" constant="10" id="lkU-e2-HUk"/>
+                            <constraint firstItem="E2d-HS-Y18" firstAttribute="leading" secondItem="i6j-IB-Y11" secondAttribute="leading" constant="10" id="p0C-Tz-6qe"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>

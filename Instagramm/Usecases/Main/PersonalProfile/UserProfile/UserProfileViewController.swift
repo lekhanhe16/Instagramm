@@ -84,7 +84,6 @@ class UserProfileViewController: UIViewController {
     func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] collectionView,indexPath,item in
             if indexPath.section == 0 {
-                print("hellooo")
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mycell", for: indexPath) as! MyCell
                 cell.config(withPost: (self?.dataSet1.first(where: { post in
                     post.post_id == item
