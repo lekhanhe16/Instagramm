@@ -11,4 +11,5 @@ struct Conversation {
     var senders: [Sender]
     var messages = [Message]()
     var convID: String
+    var latestMsg: Message?
 }

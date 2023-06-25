@@ -21,7 +21,6 @@ class UserDB {
             if error != nil {
                 return
             }
-            print(username)
             if let querySnapshot {
                 if querySnapshot.documents.first(where: { $0.get("username") != nil && ($0.get("username") as! String) == username }) == nil {
                     handler(true)
@@ -125,7 +124,6 @@ class UserDB {
     }
     
     func getCurrentUserAsync(completion: @escaping () -> Void) {
-        print("hello")
         db.collection("users").getDocuments { [weak self] querySnapshot, _ in
             if let querySnapshot {
                 let doc = querySnapshot.documents.first(where: { $0.get("username") != nil && ($0.get("uid") as! String) == Auth.auth().currentUser?.uid})!
