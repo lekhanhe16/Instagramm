@@ -34,7 +34,7 @@ class SearchViewController: UIViewController {
             suggestionsView = Bundle.main.loadNibNamed("SearchSuggestionsView", owner: nil)?.first as? SearchSuggestionsView
             suggestionsView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 400 - (navigationController?.navigationBar.frame.height)!)
             suggestionsView.clickEvent.asObservable().subscribe(onNext: { [weak self] user in
-                print(user)
+                //print(user)
                 let userProfileVC = UIStoryboard(name: "UserProfile", bundle: nil).instantiateViewController(identifier: "userprofilevc") { coder in
                     UserProfileViewController(coder: coder, user: user)
                 }

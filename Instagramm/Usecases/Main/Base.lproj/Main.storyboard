@@ -291,7 +291,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="VeM-kZ-fCb">
                         <rightBarButtonItems>
-                            <barButtonItem image="paperplane" catalog="system" id="gRD-Sx-WGJ"/>
+                            <barButtonItem image="paperplane" catalog="system" id="gRD-Sx-WGJ">
+                                <connections>
+                                    <action selector="btnDirectMsgClicked:" destination="jmQ-b8-pBF" id="Fsy-fH-Ckk"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="heart" catalog="system" id="S2I-t1-WbJ">
                                 <connections>
                                     <action selector="btnHeartClicked:" destination="jmQ-b8-pBF" id="Uca-y2-JNx"/>

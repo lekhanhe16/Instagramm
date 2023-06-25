@@ -11,6 +11,7 @@
 		6B008E882A30E9B20090716C /* BaseContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B008E872A30E9B20090716C /* BaseContentCell.swift */; };
 		6B008E8D2A30F7E40090716C /* UserCustomMsgContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B008E8B2A30F7E40090716C /* UserCustomMsgContentCell.swift */; };
 		6B008E8E2A30F7E40090716C /* UserCustomMsgContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B008E8C2A30F7E40090716C /* UserCustomMsgContentCell.xib */; };
+		6B08F99E2A3F7160003A8808 /* MessageQueueDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B08F99D2A3F7160003A8808 /* MessageQueueDB.swift */; };
 		6B1D55232A096CD50004F4E8 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B1D55222A096CD50004F4E8 /* FeedCell.xib */; };
 		6B1D55252A096D070004F4E8 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D55242A096D070004F4E8 /* FeedCell.swift */; };
 		6B2699382A2F5EDF000D34CA /* CustomMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2699372A2F5EDF000D34CA /* CustomMessageSizeCalculator.swift */; };
@@ -77,6 +78,7 @@
 		6B008E872A30E9B20090716C /* BaseContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContentCell.swift; sourceTree = "<group>"; };
 		6B008E8B2A30F7E40090716C /* UserCustomMsgContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCustomMsgContentCell.swift; sourceTree = "<group>"; };
 		6B008E8C2A30F7E40090716C /* UserCustomMsgContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCustomMsgContentCell.xib; sourceTree = "<group>"; };
+		6B08F99D2A3F7160003A8808 /* MessageQueueDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageQueueDB.swift; sourceTree = "<group>"; };
 		6B1D55222A096CD50004F4E8 /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		6B1D55242A096D070004F4E8 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		6B2699372A2F5EDF000D34CA /* CustomMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageSizeCalculator.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				6B8F89102A09388C009EFBF1 /* StorageDB.swift */,
 				6B8D03B82A2CEE2600FE6C36 /* MessageDB.swift */,
 				6BA5B3052A35D337001ECC56 /* ConversationDB.swift */,
+				6B08F99D2A3F7160003A8808 /* MessageQueueDB.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -484,7 +487,6 @@
 				6B8D03B32A2CC73600FE6C36 /* DirectMessage */,
 				6BF42DCB2A2388F0009A720B /* Post.swift */,
 				6BF42DCD2A2388F9009A720B /* User.swift */,
-				6B8D03AC2A2C9F1F00FE6C36 /* Comment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -632,6 +634,7 @@
 			files = (
 				6BC84ADD2A0558A4003FD456 /* MyProfileViewController.swift in Sources */,
 				6BE0C2412A3244CF00A375CB /* Conversation.swift in Sources */,
+				6B08F99E2A3F7160003A8808 /* MessageQueueDB.swift in Sources */,
 				6B1D55252A096D070004F4E8 /* FeedCell.swift in Sources */,
 				6BE0C23A2A32404E00A375CB /* DmCell.swift in Sources */,
 				6B8D03B22A2CA57E00FE6C36 /* DirectMessageViewController.swift in Sources */,
@@ -650,7 +653,6 @@
 				6B8F890E2A093450009EFBF1 /* MediaViewCell.swift in Sources */,
 				6B86161F2A061EB2008CD986 /* SearchSuggestionsView.swift in Sources */,
 				6B28B9F42A06EEA700C2E4D4 /* MediaPickerViewController.swift in Sources */,
-				6B8D03AD2A2C9F1F00FE6C36 /* Comment.swift in Sources */,
 				6BC7EAC82A077983001EE344 /* CaptionCreatingViewController.swift in Sources */,
 				6B8616242A062546008CD986 /* SuggestionCell.swift in Sources */,
 				6B8616332A063EBF008CD986 /* ForYouViewController.swift in Sources */,

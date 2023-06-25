@@ -19,6 +19,11 @@ class NewFeedViewController: UIViewController {
         super.loadView()
     }
 
+    @IBAction func btnDirectMsgClicked(_ sender: Any) {
+        let dmVc = UIStoryboard(name: "DmList", bundle: nil).instantiateViewController(withIdentifier: "dmlistVC") as! DmListViewController
+        dmVc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(dmVc, animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

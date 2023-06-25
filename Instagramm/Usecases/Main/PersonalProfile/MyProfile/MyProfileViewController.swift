@@ -70,7 +70,7 @@ class MyProfileViewController: UIViewController {
     }
     
     func loadData1() {
-        print(dataSet1.compactMap {$0.post_id})
+        //print(dataSet1.compactMap {$0.post_id})
         snapShot = NSDiffableDataSourceSnapshot()
         snapShot.appendSections([0])
         snapShot.appendItems(dataSet1.compactMap {$0.post_id}, toSection: 0)

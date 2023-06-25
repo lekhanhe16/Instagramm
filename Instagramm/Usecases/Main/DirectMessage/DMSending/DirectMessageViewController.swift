@@ -149,13 +149,17 @@ extension DirectMessageViewController: InputBarAccessoryViewDelegate {
             }
         }
         ConversationDB.shared.setIsSenderTyping(cid: conversationId, sender: curSender.senderId, isTyping: false, completion: { [weak self] in
-            MessageDB.shared.sendMessage(chatId: self?.conversationId ?? "", message: newMessage) { _, error in
-                if error != nil {}
-                else {
-                    inputBar.inputTextView.text = ""
-                }
-            }
+            print("hello")
+            
         })
+        MessageDB.shared.sendMessage(chatId: conversationId , receiver: receiver, message: newMessage) { _, error in
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+            else {
+                inputBar.inputTextView.text = ""
+            }
+        }
     }
 
     func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
